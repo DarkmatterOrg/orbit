@@ -35,3 +35,9 @@ func Done(msg string) {
 
 	fmt.Println(done("DONE") + ": " + msg)
 }
+
+func Debug(msg string) {
+	debug := color.New(color.FgHiCyan, color.Bold).SprintFunc()
+
+	fmt.Println(debug("DEBUG") + ": " + msg)
+}
