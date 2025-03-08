@@ -15,7 +15,7 @@ func Notice(msg string) {
 func Info(msg string) {
 	info := color.New(color.FgBlue, color.Bold).SprintFunc()
 
-	fmt.Println(Info("INFO") + ": " + msg)
+	fmt.Println(info("INFO") + ": " + msg)
 }
 
 func Error(msg string) {
