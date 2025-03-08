@@ -2,7 +2,7 @@ package utils
 
 import "syscall"
 
-func Is_root() bool {
+func IsRoot() bool {
 	if syscall.Getuid() == 0 {
 		return true
 	}

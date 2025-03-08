@@ -15,7 +15,7 @@ func Disable_systemd_service(service_name string) {
 	}
 
 	for _, service := range services {
-		if Pathexists(service.path) {
+		if PathExists(service.path) {
 			cmd := exec.Command("systemctl", "disable", service.serviceName)
 			err := cmd.Run()
 
@@ -39,7 +39,7 @@ func Disable_user_systemd_service(service_name string) {
 	}
 
 	for _, service := range services {
-		if Pathexists(service.path) {
+		if PathExists(service.path) {
 			cmd := exec.Command("systemctl", "disable", "--global", service.serviceName)
 			err := cmd.Run()
 
@@ -63,7 +63,7 @@ func Enable_systemd_service(service_name string) {
 	}
 
 	for _, service := range services {
-		if Pathexists(service.path) {
+		if PathExists(service.path) {
 			cmd := exec.Command("systemctl", "enable", service.serviceName)
 			err := cmd.Run()
 
@@ -87,7 +87,7 @@ func Enable_user_systemd_service(service_name string) {
 	}
 
 	for _, service := range services {
-		if Pathexists(service.path) {
+		if PathExists(service.path) {
 			cmd := exec.Command("systemctl", "enable", "--global", service.serviceName)
 			err := cmd.Run()
 
