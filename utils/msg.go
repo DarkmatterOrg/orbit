@@ -12,6 +12,12 @@ func Notice(msg string) {
 	fmt.Println(notice("NOTICE") + ": " + msg)
 }
 
+func Info(msg string) {
+	info := color.New(color.FgBlue, color.Bold).SprintFunc()
+
+	fmt.Println(Info("INFO") + ": " + msg)
+}
+
 func Error(msg string) {
 	error := color.New(color.FgRed, color.Bold).SprintFunc()
 
