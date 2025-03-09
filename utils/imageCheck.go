@@ -1,6 +1,10 @@
 package utils
 
-import "os"
+import (
+	"errors"
+	"os"
+	"strings"
+)
 
 func Getimagetype() string {
 	paths := []string{
@@ -16,4 +20,13 @@ func Getimagetype() string {
 	}
 
 	return ""
+}
+
+func IsCurrentImage(imageName string) (bool, error) {
+	imageType := Getimagetype()
+	if imageType == "" {
+		return false, errors.New("Couldn't get image type")
+	}
+
+	return strings.Contains(imageType, strings.ToLower(imageName)), nil
 }
