@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"errors"
 	"os"
 	"strings"
 )
@@ -22,11 +21,11 @@ func Getimagetype() string {
 	return ""
 }
 
-func IsCurrentImage(imageName string) (bool, error) {
+func IsCurrentImage(imageName string) bool {
 	imageType := Getimagetype()
 	if imageType == "" {
-		return false, errors.New("Couldn't get image type")
+		return false
 	}
 
-	return strings.Contains(imageType, strings.ToLower(imageName)), nil
+	return strings.Contains(imageType, strings.ToLower(imageName))
 }
