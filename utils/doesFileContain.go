@@ -2,7 +2,7 @@ package utils
 
 import (
 	"os"
-	"regexp"
+	"strings"
 )
 
 func DoesFileContain(str string, filepath string) bool {
@@ -11,9 +11,6 @@ func DoesFileContain(str string, filepath string) bool {
 		panic(err)
 	}
 
-	isExist, err := regexp.Match(str, b)
-	if err != nil {
-		panic(err)
-	}
-	return isExist
+	s := string(b)
+	return strings.Contains(s, str)
 }
