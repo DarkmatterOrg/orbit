@@ -5,6 +5,7 @@ import (
 	"strings"
 )
 
+// Retunrs the type of image for Darkmatterorg images
 func Getimagetype() string {
 	paths := []string{
 		"/usr/share/horizon/image_type",
@@ -21,6 +22,13 @@ func Getimagetype() string {
 	return ""
 }
 
+// Checks if the imagename is the current running image
+/*
+	Example:
+	if IsCurrentImage("aster") {
+		// code
+	}
+*/
 func IsCurrentImage(imageName string) bool {
 	imageType := Getimagetype()
 	if imageType == "" {

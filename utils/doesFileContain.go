@@ -5,6 +5,13 @@ import (
 	"strings"
 )
 
+// Checks if a file contains a string
+/*
+	Example:
+	if DoesFileContain("hello", "test.txt") {
+		// code
+	}
+*/
 func DoesFileContain(str string, filepath string) bool {
 	b, err := os.ReadFile(filepath)
 	if err != nil {

@@ -4,6 +4,11 @@ import (
 	"os"
 )
 
+// Write a string to file
+/*
+	Example:
+	WriteFile("test.txt", "Hello, Go!")
+*/
 func WriteFile(fullFilePath string, stringToWrite string) error {
 	file, err := os.Create(fullFilePath)
 	if err != nil {
