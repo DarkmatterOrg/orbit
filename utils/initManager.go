@@ -10,6 +10,8 @@ const FAILED_DISABLE_SERVICE = "Failed to disable "
 const FAILED_ENABLE_SERVICE = "Failed to enable "
 const DISABLE_SERVICE = "Disabled "
 const ENABLED_SERVICE = "Enabled "
+const SET_TARGET = "Set target to "
+const FAILED_SET_TARGET = "Failed to set target to "
 
 var service_name string
 var msg = ENABLED_SERVICE + service_name
@@ -114,6 +116,17 @@ func EnableSystemdService(service_name string, user_mode bool) {
 		} else {
 			Done(msg)
 		}
+	}
+}
+
+func SetSystemdTarget(target_name string) {
+	cmd := exec.Command("systemctl", "isolate", target_name)
+	err := cmd.Run()
+
+	if err != nil {
+		Error(FAILED_SET_TARGET)
+	} else {
+		Done(SET_TARGET)
 	}
 }
 
