@@ -19,7 +19,7 @@ func Getos() string {
 	return *system_name
 }
 
-// Using regex to read only the part after PRETTY_NAME
+// Using regex to read only the part after ID
 func readOSRelease(path string) *string {
 	file, err := os.Open(path)
 
@@ -29,7 +29,7 @@ func readOSRelease(path string) *string {
 	}
 	defer file.Close()
 
-	re := regexp.MustCompile(`(?m)^PRETTY_NAME=(?:"(.*?)"|(.*))$`)
+	re := regexp.MustCompile(`(?m)^ID=(?:"(.*?)"|(.*))$`)
 
 	scanner := bufio.NewScanner(file)
 
@@ -39,7 +39,9 @@ func readOSRelease(path string) *string {
 		if matches := re.FindStringSubmatch(line); matches != nil {
 			if matches[1] != "" {
 				return &matches[1]
-			} else if matches[2] != "" {
+			}
+
+			if matches[2] != "" {
 				return &matches[2]
 			}
 		}
