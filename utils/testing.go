@@ -1,5 +1,5 @@
 package utils
 
 func Test() {
-	println("test")
+	println("testing 123")
 }
