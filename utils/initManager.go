@@ -21,6 +21,22 @@ var failed_msg_disabled = FAILED_DISABLE_SERVICE + service_name
 var openrc_path = fmt.Sprintf("/etc/init.d/" + user + "." + user)
 var user = os.Getenv("USER")
 
+var init_systems = [4]string{"systemd", "runit", "openrc", "dinit"}
+
+func DetectInit() string {
+	for _, init := range init_systems {
+		if init == "systemd" {
+			return "systemd"
+		}
+
+		if IsCmdInstalled(init) {
+			return init
+		}
+	}
+
+	return ""
+}
+
 // Enable a runit service by making a symlink from /etc/sv to /var/service
 /*
 	Example
